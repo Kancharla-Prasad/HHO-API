@@ -18,18 +18,15 @@ class OffUserService{
     async login(userData: Partial<OffUserDocument>):Promise<String>{
             const { email, password } = userData;
         
-            if (!email || !password) {
-                throw new ValidationError("Ensure to enter every field");
-            }
-        
+            
             const userExist = await offUserModel.findOne({ email }) as OffUserDocument;
-        
+            console.log(userExist);
             if (!userExist) {
                 throw new NotFoundError("User not found, Enter valid credentials");
             }
         
             if (password !== userExist.password) {
-                throw new ValidationError("Password is not correct, Re-enter");
+                throw new ValidationError("Invalid Credentials");
             }
             const payload: IPayload = {
                 user: {

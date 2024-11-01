@@ -25,11 +25,11 @@ class OffUserController{
       res.json({ success: true, token });
     } catch (error) {
       if(error instanceof NotFoundError){
-        res.status(404).json({success:false,message:error.message});
+        res.status(200).json({success:false,message:error.message});
       }else if(error instanceof ValidationError){
-        res.status(400).json({success:false,message:error.message});
+        res.status(404).json({success:false,message:error.message});
       }else{
-        res.status(500).json({success:false,message: "Error in updating transaction",error});
+        res.status(200).json({success:false,message: "Error in while login ",error});
       }
     }
 
