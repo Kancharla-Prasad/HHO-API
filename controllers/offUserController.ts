@@ -53,8 +53,9 @@ class OffUserController{
     }
   }
     async getUserData(req: Request, res: Response){
+      console.log(req.user.user);
       try{
-        const data = await offUserService.getUserData(req.params.id);
+        const data = await offUserService.getUserData(req.user.user.id);
         res.json({success:true, data:data});
       }catch(error){
         res.status(400).json({success:false, message: error.message});

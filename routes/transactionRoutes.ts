@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.use(middleware)
 
-router.post('/add-transaction',transactionController.createTransaction);
-router.put("/update-transaction/:id",transactionController.updateTransaction);
-router.delete("/delete-transaction/:id",transactionController.deleteTransaction);
-router.get("/get-all-transactions",transactionController.getAllTransactions);
-router.get("/search-transactions",transactionController.getMatchedTransactions);
+router.post('/add-transaction',middleware,transactionController.createTransaction);
+router.put("/update-transaction/:id",middleware,transactionController.updateTransaction);
+router.delete("/delete-transaction/:id",middleware,transactionController.deleteTransaction);
+router.get("/get-all-transactions",middleware,transactionController.getAllTransactions);
+router.get("/search-transactions",middleware,transactionController.getMatchedTransactions);
 export default router;
